@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'My Contact' %}
+{% block body %}
+
+<div class="jumbotron text-center">
+    <h1>My Contact</h1>
+    <p>Bienvenue dans mon repertoire de contacts</p>
+</div>
+    <div class="container">
+        <h2>Les derniers contacts ajoutés</h2>
+        <div class="row flex">
+            {% for contact in contacts  %}
+                <div class="col-3">
+                    <div class="card">
+                        {% if contact.filename %}
+                            <img src="{{ vich_uploader_asset(contact, 'imageFile') | imagine_filter('thumb')}}" alt="card-img-top" style="width: 100%; height: auto;">
+                        {% else %}
+                            <img src="/images/contacts/logo.png" alt="card-img-top" style="width: 100%; height: auto;">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href=" {{ path('contact.show', {id: contact.id, slug: contact.slug}) }}">{{ contact.prenom }}</a>
+                            </h5>
+                            <p class="card-text" style="font-weight: bold;font-size: 1.5rem">+221 {{  contact.numero }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

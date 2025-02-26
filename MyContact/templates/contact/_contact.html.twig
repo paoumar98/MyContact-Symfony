@@ -1,0 +1,17 @@
+<div class="card mb-4">
+
+    {% if contact.filename %}
+        <img src="{{ vich_uploader_asset(contact, 'imageFile') | imagine_filter('thumb')}}" alt="card-img-top" style="width: 100%; height: 500px;">
+    {% else %}
+        <img src=" /images/contacts/logo.png" alt="card-img-top" style="width: 100%; height: 500px;">
+    {% endif %}
+    <div class="card-body">
+
+        <h5 class="card-title">
+            <a href="{{ path('contact.show', {slug: contact.slug, id: contact.id}) }}">
+                {{ contact.prenom }}
+            </a>
+        </h5>
+        <p class="card-text" style="font-weight: bold;font-size: 1.5rem">+221 {{  contact.numero }}</p>
+    </div>
+</div>

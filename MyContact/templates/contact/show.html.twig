@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block title contact.prenom %}
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    {% if contact.filename %}
+                        <img src="{{ vich_uploader_asset(contact, 'imageFile') | imagine_filter('medium')}}" alt="card-img-top" style="width: 100%; height: auto;">
+                    {% else %}
+                        <img src=" /images/contacts/logo.png" alt="card-img-top" style="width: 100%; height: auto">
+
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <h1>{{ contact.prenom }}</h1>
+                    <h2>{{ contact.numero }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+
+
+        <div class="row">
+            <div class="col-md-8">
+
+
+                <h2>Details du contact</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <td>Prenom</td>
+                        <td>{{ contact.prenom }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nom</td>
+                        <td>{{ contact.nom }}</td>
+                    </tr>
+                    <tr>
+                        <td>Numero</td>
+                        <td>{{ contact.numero }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{ contact.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Statut</td>
+                        <td>{{ contact.statusType }}</td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
